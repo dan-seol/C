@@ -1,0 +1,23 @@
+<stdio.h>
+
+FILE *fopen(const char *filename, const char *mode)
+Opens the filename pointed to by filename using the given mode.
+"r" - read only
+"w" - write only
+"a" - Append
+"b" - can be added to any, meaning to interpret the file as binary.
+
+size_t fread(void *ptr, size_t size, size_t nmemb, FILE *stream)
+Reads data from the given stream into the array pointed to by ptr.
+
+long int ftell(FILE *stream)
+Returns the current file position of the given stream
+
+int fclose(FILE *stream)
+Closes the stream. All buffers are flushed
+
+size_t fwrite(const void *ptr, size_t size, size_t nmemb, FILE *stream)
+Writes data from the array pointed to by ptr to the given stream
+
+int fseek(FILE *stream, long int offset, int whence)
+Sets the file position of the stream to the given offset. The argument offset signifies the number of bytes to seek from the given whence position

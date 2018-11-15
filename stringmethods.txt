@@ -1,0 +1,62 @@
+#include <stdio.h>
+// print string input from the stream
+int main()
+{
+    char array[100];
+
+    printf("Enter a string\n");
+    scanf("%s", array);
+
+    printf("Your string: %s\n", array);
+    return 0;
+}
+
+
+//print string input including the whitespace from the stream
+int main()
+{
+  char z[100];
+
+  printf("Enter a string\n");
+  gets(z);
+
+  printf("The string: %s\n", z);
+  return 0;
+}
+
+#include <stdio.h>
+
+int main()
+{
+   char s[100];
+   int c = 0;
+
+   gets(s);
+
+   while (s[c] != '\0') {
+      printf("%c", s[c]);
+      c++;
+   }
+
+   return 0;
+}
+
+for (c = 0; s[c] != '\0'; c++)
+   printf("%c", s[c]);
+
+#include <stdio.h>
+
+void print(char*);
+
+int main() {
+   char s[100];
+   gets(s);
+   print(s);
+   return 0;
+}
+
+void print(char *t) {
+   if (*t == '\0')
+      return;
+   printf("%c", *t);
+   print(++t
