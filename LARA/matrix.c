@@ -102,4 +102,6 @@ int main()
   multiplyMatrix(matrix2, matrix, matrixResult);
   printMatrix(matrixResult);
 
+  return 0;
+
 }
