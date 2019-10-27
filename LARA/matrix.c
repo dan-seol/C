@@ -45,8 +45,8 @@ void transposeMatrix(int matrix[ROWS][COLS]) {
   
     for(int j = 0; j < i; j++) {
     
-     int ij = *(pm + (i * COLS) + j) + 0;
-     int ji = *(pm + (j * COLS) + i) + 0;
+     int ij = *(pm + (i * COLS) + j);
+     int ji = *(pm + (j * COLS) + i);
      
      *(pm + (i * COLS) + j) = ji;
      *(pm + (j * COLS) + i) = ij; 
@@ -73,12 +73,8 @@ void multiplyMatrix(int m1[2][COLS], int m2[ROWS][COLS], int resultMatrix[ROWS][
           sum += (m1[i][k] * m2[k][j]);
         
         }
-      
-      } else {
-        
-        sum = 0;
 
-        }
+      }
       
       resultMatrix[i][j] = sum;
 
