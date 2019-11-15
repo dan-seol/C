@@ -55,7 +55,7 @@ void showRecords() {
   }
    fflush(fp);
    fclose(fp);
-  printf("#################### DATABASE DISPLAY:END ####################\n");
+  printf("##################### DATABASE DISPLAY:END #####################\n");
   }
 
 void addRecords(int newId, char* newName, int newAge, double newGpa) {
