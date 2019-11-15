@@ -89,6 +89,8 @@ int delRecords(char* nameToDel){
     
    if(strcmp(record->NAME, nameToDel) !=0) {
     fprintf(result, "%d, %s, %2d, %.1f\n", record->ID, record->NAME, record->AGE, record->GPA);
+   } else {
+    isDetected = 1;
    }
     free(record);
 
@@ -104,14 +106,82 @@ int delRecords(char* nameToDel){
 
 }
 
-int main(){
+char* strUpp(char * lower){
+  char* name = malloc(1024);
+  strcpy(name, lower);
+  char *s = name;
+
+  while(*s) {
+  
+    *s = toupper((unsigned char)*s);
+    s++;
+  
+  }
+
+  return name;
+
+  
+}
+
+int main(int argc, char* argv[]){
 
   //Opening the file for reading
+  /*
   delRecords("dan");
   showRecords();
   addRecords(25, "dan", 22, 3.8);
   showRecords();
+  */
+  if(argc < 2){
   
+    printf("You did not provide any arguments.\nPlease enter: ./database CMP OPT1 OPT2 OPT3 OPT4\n");
+    return 1;
+  }
+
+  char * CMD  = strUpp(argv[1]);
+  
+  int isSHOW = (strcmp(CMD, "SHOW") == 0);
+  int isADD = (strcmp(CMD, "ADD") == 0) ;
+  int isDELETE = (strcmp(CMD, "DELETE") == 0);
+  if(!isSHOW && !isADD && !isDELETE ) {
+
+    printf("The command you requested is invalid.\n Please select from one of these: SHOW, DELETE, ADD\n");
+    printf("The command you typed is (capitalized) : %s\n",CMD);    
+    return 1;
+
+  }else if(isSHOW){
+    if(argc != 2){
+    printf("You typed unnecessary argument with SHOW\n");
+    return 1;
+    }
+    printf("Showing records:\n");
+    showRecords();
+  
+  }else if(isDELETE){
+    if(argc == 2){
+      printf("The name of the record to delete is missing\n");
+      return 1;
+    }
+    int isDetected = delRecords(argv[2]);
+      if(isDetected == 0){
+      printf("Sorry, that user was not found. Nothing was deleted\n");
+      return 1;
+      }
+
+      printf("The record of the user %s was deleted \n", argv[2]);
+  } else {
+    if(argc < 5){
+    
+      printf("Missing ID, Name, AGE, and GPA arguments");
+      return 1;
+    }
+    int ID = (int) strtol(argv[2], NULL, 10);
+    int AGE = (int) strtol(argv[4], NULL, 10);
+    double GPA = strtod(argv[5], NULL);
+    addRecords(ID, argv[3], AGE, GPA);
+    printf("A new record with ID=%d, NAME=%s, AGE=%d, GPA=%.1f has been added\n",ID, argv[3], AGE, GPA);  
+
+  }
   return 0;
 
 }
