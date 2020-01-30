@@ -119,8 +119,7 @@ char* strUpp(char * lower){
   }
 
   return name;
-
-  
+ 
 }
 
 int main(int argc, char* argv[]){
